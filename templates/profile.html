@@ -31,7 +31,7 @@
 
     function toHHMMSS(para_seconds)
     {
-        var sec_num = parseInt(para_seconds, 10); // don't forget the second param
+        var sec_num = parseInt(para_seconds, 10);
         var hours   = Math.floor(sec_num / 3600);
         var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
         var seconds = sec_num - (hours * 3600) - (minutes * 60);
@@ -59,7 +59,7 @@
         imageView.src = entry["img_icon_url"];
         imageCell.appendChild(imageView);
         currentRow.insertCell(-1).textContent = entry["name"];
-        currentRow.insertCell(-1).textContent = toHHMMSS(entry["playtime"]*100);
+        currentRow.insertCell(-1).textContent = toHHMMSS(entry["playtime"]*100) + " H";
     }
 </script>
 </body>
