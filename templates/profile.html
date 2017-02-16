@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ username }} on SteamGamesViewer</title>
+    <style>
+        h1
+        {
+            text-align: center;
+        }
+
+        h2
+        {
+            text-align: center;
+        }
+
+        table
+        {
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello {{ username }}</h1>
+    <h2>Your {{ total_games }} games:</h2>
+    <br />
+    <hr />
+    <table id="placeHolder"></table>
+<script>
+
+    function toHHMMSS(para_seconds)
+    {
+        var sec_num = parseInt(para_seconds, 10); // don't forget the second param
+        var hours   = Math.floor(sec_num / 3600);
+        var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+        var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+        if (hours   < 10) {hours   = "0"+hours;}
+        if (minutes < 10) {minutes = "0"+minutes;}
+        if (seconds < 10) {seconds = "0"+seconds;}
+        var time = hours+':'+minutes+':'+seconds;
+        return time;
+    }
+
+    let jsonContent = JSON.parse({{ json_content|tojson|safe }});
+    let placeHolder = document.getElementById("placeHolder");
+    let tableHeader = placeHolder.createTHead().insertRow();
+    tableHeader.insertCell(-1).textContent = "ICON";
+    tableHeader.insertCell(-1).textContent = "NAME";
+    tableHeader.insertCell(-1).textContent = "PLAYTIME";
+    let tableBody = placeHolder.createTBody();
+    for(let i=0; i < jsonContent.length; i++)
+    {
+        let currentRow = tableBody.insertRow();
+        let entry = jsonContent[i];
+        let imageCell = currentRow.insertCell(-1);
+        let imageView = document.createElement("img");
+        imageView.src = entry["img_icon_url"];
+        imageCell.appendChild(imageView);
+        currentRow.insertCell(-1).textContent = entry["name"];
+        currentRow.insertCell(-1).textContent = toHHMMSS(entry["playtime"]*100);
+    }
+</script>
+</body>
+</html>
