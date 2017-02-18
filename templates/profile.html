@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{{ username }} on SteamGamesViewer</title>
+  <meta charset="UTF-8">
+  <title>{{ username }} on SteamGamesViewer</title>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
     <style>
         h1
         {
@@ -20,20 +25,13 @@
             text-align: center;
         }
     </style>
-
-        <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-
 </head>
 <body>
     <h1>Hello {{ username }}</h1>
     <h2>Your {{ total_games }} games:</h2>
     <br />
     <hr />
-    <table id="placeHolder"></table>
+    <table class="striped" id="placeHolder"></table>
 <script>
 
     function toHHMMSS(para_seconds)

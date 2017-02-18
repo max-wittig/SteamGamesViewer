@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, redirect
 import os
-from steam_helper import *
+from steam_account import *
 from game import *
 
 app = Flask(__name__)
@@ -13,9 +13,13 @@ def get_api_secret():
 
 @app.route('/user/<username>')
 def open_stats_page(username):
-    steam_helper = SteamHelper(username, get_api_secret())
-    return render_template("profile.html", username=username, total_games=len(steam_helper.games),
-                           json_content=Game.games_list_to_json(steam_helper.games))
+    try:
+        username = str(username)
+        steam_helper = SteamHelper(username, get_api_secret())
+        return render_template("profile.html", username=username, total_games=len(steam_helper.games),
+                               json_content=Game.games_list_to_json(steam_helper.games))
+    except:
+        return "No Internet connection"
 
 
 @app.route('/')
