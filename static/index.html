@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SteamGamesViewer</title>
+</head>
+<body>
+    <input id="usernameInput" type="text">
+    <a id="submitButton" onclick="onSubmitClicked()">Submit</a>
+</form>
+
+<script>
+    function onSubmitClicked()
+    {
+        let username = document.getElementById("usernameInput").value;
+        console.log(username);
+        window.location.href = "/user/" + username;
+    }
+</script>
+</body>
+</html>
