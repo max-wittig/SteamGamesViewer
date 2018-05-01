@@ -1,5 +1,15 @@
 # SteamGamesViewer
 
+## docker image
+
+```bash
+  export STEAM_API_KEY=********
+```
+
+```bash
+  docker run -e STEAM_API_KEY=$STEAM_API_KEY -p 4000:4000 maxwittig/steamgamesviewer
+```
+
 ## installation
 
 * Install python virtualenv
