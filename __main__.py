@@ -1,25 +1,21 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, Response
 import os
-from steam_account import *
-from game import *
+from steam_account import SteamHelper
+from game import Game
 
 app = Flask(__name__)
 
 
-def get_api_secret():
-    with open(os.path.join(os.path.dirname(__file__), "steam_api_key.txt"), "r") as f:
-        return f.read()
-
-
 @app.route('/user/<username>')
 def open_stats_page(username):
-    try:
-        username = str(username)
-        steam_helper = SteamHelper(username, get_api_secret())
-        return render_template("profile.html", username=username, total_games=len(steam_helper.games),
-                               json_content=Game.games_list_to_json(steam_helper.games))
-    except:
-        return "No Internet connection"
+    username = str(username)
+    steam_helper = SteamHelper(username, os.getenv("STEAM_API_KEY"))
+    if not steam_helper.games:
+        return Response("User not found!", 404)
+    return render_template(
+        "profile.html", username=username, total_games=len(
+            steam_helper.games), json_content=Game.games_list_to_json(
+            steam_helper.games))
 
 
 @app.route('/')
@@ -28,4 +24,6 @@ def home():
 
 
 if __name__ == '__main__':
+    if not os.getenv("STEAM_API_KEY"):
+        exit("Please set the STEAM_API_KEY environment variable!")
     app.run(host="0.0.0.0", debug=False, port=4000)

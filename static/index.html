@@ -7,11 +7,8 @@
 <body>
     <input id="usernameInput" type="text">
     <a id="submitButton" onclick="onSubmitClicked()">Submit</a>
-</form>
-
 <script>
-    function onSubmitClicked()
-    {
+    function onSubmitClicked() {
         let username = document.getElementById("usernameInput").value;
         window.location.href = "/user/" + username;
     }

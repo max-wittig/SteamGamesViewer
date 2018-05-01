@@ -7,7 +7,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-
     <style>
         h1
         {
@@ -33,9 +32,7 @@
     <hr />
     <table class="striped" id="placeHolder"></table>
 <script>
-
-    function toHHMMSS(para_seconds)
-    {
+    function toHHMMSS(para_seconds) {
         var sec_num = parseInt(para_seconds, 10);
         var hours   = Math.floor(sec_num / 3600);
         var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
@@ -55,8 +52,7 @@
     tableHeader.insertCell(-1).textContent = "NAME";
     tableHeader.insertCell(-1).textContent = "PLAYTIME";
     let tableBody = placeHolder.createTBody();
-    for(let i=0; i < jsonContent.length; i++)
-    {
+    for(let i=0; i < jsonContent.length; i++) {
         let currentRow = tableBody.insertRow();
         let entry = jsonContent[i];
         let imageCell = currentRow.insertCell(-1);
