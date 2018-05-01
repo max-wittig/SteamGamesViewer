@@ -1,9 +1,37 @@
 # SteamGamesViewer
 
-###  
-How to run it:  
+## installation
 
-1. Create a file in the root folder of the project and name it `steam_api_key.txt`  
-2. Insert your steam api key into the file from here:  `https://steamcommunity.com/dev/apikey`  
-3. Start the server by running `python3 __main__.py`  
-4. Open `http://127.0.0.1:4000/` in your browser  
+* Install python virtualenv
+  ```bash
+  python3 -m venv venv
+  ```
+  
+* Source virtualenv
+  ```bash
+  source venv/bin/activate
+  ```
+  
+* Install requirements
+  ```bash
+  pip install --require-hashes -r requirements.txt
+  ```
+
+## usage
+
+* Set steam API key environment variable
+  ```bash
+  export STEAM_API_KEY=*********
+  ```
+
+* Start the server
+  ```bash
+  python3 __main__.py
+  ```
+
+* Goto localhost:4000 to see the result
+  
+## result
+
+![image](https://user-images.githubusercontent.com/6639323/39488769-8b398d0c-4d83-11e8-8616-d966af25331e.png)
+
