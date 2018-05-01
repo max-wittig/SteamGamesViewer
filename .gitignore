@@ -4,3 +4,4 @@ steam_api_key.txt
 build/
 dist/
 __pycache__/
+venv/
