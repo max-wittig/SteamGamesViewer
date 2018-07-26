@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SteamGamesViewer</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Steam games viewer</h1>
+    <div style="text-align: center;">
+        <form action="{{ url_for('redirect_to_stats') }}">
+            <input id="usernameInput" name="username" type="text">
+            <button type="submit" id="submitButton">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
