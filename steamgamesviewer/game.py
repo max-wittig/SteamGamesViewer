@@ -13,7 +13,7 @@ class Game:
             "app_id": self.app_id,
             "playtime": self.playtime,
             "name": self.name,
-            "img_icon_url": self.img_icon_url
+            "img_icon_url": self.img_icon_url,
         }
         return game
 

@@ -1,16 +1,14 @@
-FROM python:3
+FROM python:3.7-alpine
 
 WORKDIR /opt/steam_games_viewer
-RUN useradd -ms /bin/sh steamuser && \
-    python3 -m venv venv && \
-    chown -R steamuser:steamuser venv/
+RUN adduser --disabled-password steamuser && \
+    chown -R steamuser:steamuser /home/steamuser && \
+    chown -R steamuser:steamuser /opt/steam_games_viewer && \
+    pip install poetry
 
-COPY requirements.txt .
-RUN venv/bin/pip install --require-hashes -r requirements.txt
-
-COPY . .
-RUN chown -R steamuser:steamuser .
-
+COPY --chown=steamuser:steamuser . .
 USER steamuser
+RUN poetry install -n
+
 EXPOSE 4000
-ENTRYPOINT ["venv/bin/python3", "__main__.py"]
+ENTRYPOINT ["poetry", "run", "web"]

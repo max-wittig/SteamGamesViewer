@@ -12,20 +12,11 @@
 
 ## installation
 
-* Install python virtualenv
-  ```bash
-  python3 -m venv venv
-  ```
-  
-* Source virtualenv
-  ```bash
-  source venv/bin/activate
-  ```
-  
-* Install requirements
-  ```bash
-  pip install --require-hashes -r requirements.txt
-  ```
+> [Poetry](https://github.com/sdispater/poetry) is required
+
+```bash
+poetry install
+```
 
 ## usage
 
@@ -36,7 +27,7 @@
 
 * Start the server
   ```bash
-  python3 __main__.py
+  poetry run web
   ```
 
 * Goto localhost:4000 to see the result
